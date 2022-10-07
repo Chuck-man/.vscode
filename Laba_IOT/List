@@ -1,0 +1,96 @@
+from re import S
+import random
+
+
+def Task() :
+    print("Лабораторная работа №1\n"
+    "Вариант №14. Выполнил студент группы 6214-100503D Золотилов Никита\n"
+    "Задание:\n"
+    "1. В списке целочисленных элементов найти минимальный ненулевой элемент;\n"
+    "2. С использованием цикла while найти в списке индекс последнего положительного чётного элемента;\n"
+    "3. Отсортировать список по убыванию старших цифр элементов списка (сортировка выбором)\n")
+
+
+def Input_list(L) :
+    L = list(map(int, input().split()))
+    return(L)
+
+
+def Random_List(L) :
+    b, c = map(int, input(). split())
+    for i in range(n) :
+        L.append(random.randint(b,c))
+    return(L) 
+
+def Search(L) :
+    target = 10**10
+    for i in range(len(L)) :
+        if ((L[i] < target) and (L[i] != 0)): target = L[i]
+    return target
+
+
+def Locate(L) :
+    i = len(L)-1
+    while (i > -1) and ((L[i] < 0) or (L[i] % 2 != 0)) :
+        i -= 1
+    return i
+
+def HighDigit(x) :
+    while x > 9 :
+        x = x//10
+    return x
+
+
+def SortChoice(L) :
+    for j in range (len(L) - 1) :
+        max_ = L[j]
+        imax = j
+        for i in range (j+1, len(L)) :
+            if HighDigit(L[i]) > HighDigit(max_) :
+                max_ = L[i]
+                imax = i
+        L[imax] = L[j]
+        L[j] = max_
+    return L
+
+#Начало работы
+
+Task()
+
+print("Введите способ заполнения: ")
+print("1 - ввод элементов списка в одну строку через пробел: ")
+print("2 - любое число-авт. формирование списка из n элементов: ")
+v = int(input())
+print("")
+
+L=[]
+
+if v == 1 :
+    print("Введите в строку элементы списка: ")
+    L = Input_list(L)
+else :
+    n = int(input("Введите количество элементов списка: "))
+    print("Введите диапазон значений элементов: ")
+    L = Random_List(L)
+    print(L)
+print("")
+
+m = Search(L)
+if m != -10**10 :
+    print("Минимальный ненулевой элемент = ", m)
+else :
+    print("Минимальный ненулевой элемент отсутствует")
+print("")
+
+ind = Locate(L)
+if ind > -1 :
+    print("Индекс последнего положительного чётного элемента = ", ind)
+else :
+    print("Индекс последнего положительного чётного элемента отсутствует")
+print("")
+
+print("Исходый список: ")
+print(L)
+SortChoice(L)
+print("Список после сортировки выбором: ")
+print(L)
